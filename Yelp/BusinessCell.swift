@@ -38,6 +38,18 @@ class BusinessCell: UITableViewCell {
         
         thumbImageView.layer.cornerRadius = 3
         thumbImageView.clipsToBounds = true
+        
+        
+        //sync the label width with the Apple's preferredMaxLayoutWidth - really needed?
+        //nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
+    }
+    
+    //called when rotation happens, this method gets called. so override
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        //sync again, the label width with the Apple's preferredMaxLayoutWidth - really needed?
+        //nameLabel.preferredMaxLayoutWidth = nameLabel.frame.size.width
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
