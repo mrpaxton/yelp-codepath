@@ -76,12 +76,7 @@ class Business: NSObject {
     }
     
     class func businesses(array array: [NSDictionary]) -> [Business] {
-        var businesses = [Business]()
-        for dictionary in array {
-            let business = Business(dictionary: dictionary)
-            businesses.append(business)
-        }
-        return businesses
+        return array.map{ Business(dictionary: $0) }
     }
     
     class func searchWithTerm(term: String, completion: ([Business]!, NSError!) -> Void) {

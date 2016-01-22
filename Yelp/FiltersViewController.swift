@@ -30,6 +30,7 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         var filters = [String : AnyObject]()
         
         var selectedCategories = [String]()
+        print(switchStates)
         for (row, isSelected) in switchStates {
             if isSelected {
                 selectedCategories.append(categories[row]["code"]!)
@@ -46,7 +47,6 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
 
         // Do any additional setup after loading the view.
         categories = yelpCategories()
-        print(categories[0]["name"])
         
         tableView.delegate = self
         tableView.dataSource = self
