@@ -25,9 +25,20 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let navigationController = segue.destinationViewController as! UINavigationController
-        let filtersViewController = navigationController.topViewController as! FiltersViewController
-        filtersViewController.delegate = self
+        
+        if segue.identifier == "BusinessDetailsSegue" {
+            let chosenIndex = self.tableView.indexPathForCell(sender as! BusinessCell)?.row
+            
+            if let  businessDetailsVC = segue.destinationViewController as? BusinessDetailsViewController {
+                businessDetailsVC.business = businesses[chosenIndex!]
+            }
+        }
+        
+        if let navigationController = segue.destinationViewController as? UINavigationController {
+            let filtersViewController = navigationController.topViewController as! FiltersViewController
+            filtersViewController.delegate = self
+        }
+        
     }
     
     func filtersViewController(filtersViewController: FiltersViewController,
