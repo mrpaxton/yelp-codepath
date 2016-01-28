@@ -215,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jmq-AR-vel" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2415" y="338"/>
+            <point key="canvasLocation" x="2300" y="338"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bnW-Py-x8U">
@@ -276,11 +276,45 @@
                             <constraint firstItem="EEq-di-XwR" firstAttribute="leading" secondItem="0nN-2v-mTg" secondAttribute="leading" id="xUC-D9-wwj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="H1x-4w-bay"/>
+                    <navigationItem key="navigationItem" id="H1x-4w-bay">
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="iuM-ds-dIW">
+                            <connections>
+                                <segue destination="K6W-zc-zd9" kind="push" identifier="BusinessMapSegue" id="7m6-m6-MA9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BWQ-TR-SiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1883" y="1083"/>
+        </scene>
+        <!--Business Map View Controller-->
+        <scene sceneID="gVQ-7B-a6r">
+            <objects>
+                <viewController id="K6W-zc-zd9" customClass="BusinessMapViewController" customModule="Yelp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Tbr-88-bGq"/>
+                        <viewControllerLayoutGuide type="bottom" id="rzw-kM-8zu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZwF-3l-3wX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dhg-M0-aMI">
+                                <rect key="frame" x="31" y="133" width="261" height="388"/>
+                                <color key="backgroundColor" red="0.60614343910000001" green="0.43653303560000001" blue="0.82145582660000005" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Tag-P0-YZM"/>
+                    <connections>
+                        <outlet property="mapView" destination="Dhg-M0-aMI" id="Os1-zN-eva"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="udA-Go-cDO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2303" y="1087"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JNr-Gz-mig">

@@ -16,6 +16,7 @@
 		22AAAA991AEA0A9700A544AF /* Business.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAAA981AEA0A9700A544AF /* Business.swift */; };
 		22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */; };
 		90B718C590BD546DEFEF0D61 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA3C5CF4FD317D72ABE2AAC4 /* Pods.framework */; };
+		D06A15C91C595CE800FA0908 /* BusinessMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06A15C81C595CE800FA0908 /* BusinessMapViewController.swift */; };
 		D07A15461C58CA2500EF6542 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A15451C58CA2500EF6542 /* BusinessDetailsViewController.swift */; };
 		D0A61E831C4F999800C41E73 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A61E821C4F999800C41E73 /* SwitchCell.swift */; };
 		D0A61E871C4F9F9D00C41E73 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A61E861C4F9F9D00C41E73 /* FiltersViewController.swift */; };
@@ -48,6 +49,7 @@
 		97D8B2E3FFD1AF4F4A707E47 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AA3C5CF4FD317D72ABE2AAC4 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD540129B10DFE60E8C24E2 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		D06A15C81C595CE800FA0908 /* BusinessMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessMapViewController.swift; sourceTree = "<group>"; };
 		D07A15451C58CA2500EF6542 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailsViewController.swift; sourceTree = "<group>"; };
 		D0A61E821C4F999800C41E73 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		D0A61E861C4F9F9D00C41E73 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				22AAAA9B1AEA1EC300A544AF /* BusinessesViewController.swift */,
 				D0A61E861C4F9F9D00C41E73 /* FiltersViewController.swift */,
 				D07A15451C58CA2500EF6542 /* BusinessDetailsViewController.swift */,
+				D06A15C81C595CE800FA0908 /* BusinessMapViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				D0A61E871C4F9F9D00C41E73 /* FiltersViewController.swift in Sources */,
 				22AAAA991AEA0A9700A544AF /* Business.swift in Sources */,
+				D06A15C91C595CE800FA0908 /* BusinessMapViewController.swift in Sources */,
 				222D8A7D19CCFAE000D2DB53 /* YelpClient.swift in Sources */,
 				222D8A5B19CCF9F900D2DB53 /* AppDelegate.swift in Sources */,
 				D0A61E831C4F999800C41E73 /* SwitchCell.swift in Sources */,

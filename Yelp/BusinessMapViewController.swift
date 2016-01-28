@@ -1,5 +1,5 @@
 //
-//  BusinessDetailsViewController.swift
+//  BusinessMapViewController.swift
 //  Yelp
 //
 //  Created by Sarn Wattanasri on 1/27/16.
@@ -8,15 +8,13 @@
 
 import UIKit
 
-class BusinessDetailsViewController: UIViewController {
-    
-    var business: Business!
+class BusinessMapViewController: UIViewController {
 
+    @IBOutlet weak var mapView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("business: \(business.name)")
-        print("coordinate: \(business.coordinate)")
 
         // Do any additional setup after loading the view.
     }

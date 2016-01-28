@@ -16,8 +16,14 @@ class Business: NSObject {
     let distance: String?
     let ratingImageURL: NSURL?
     let reviewCount: NSNumber?
+    let coordinate: (Double?, Double?)
+    let isClosed: Bool?
+    let menuProvider: String?
+    let crossStreets: String?
+    let id: String?
     
     init(dictionary: NSDictionary) {
+        
         name = dictionary["name"] as? String
         
         let imageURLString = dictionary["image_url"] as? String
@@ -73,6 +79,15 @@ class Business: NSObject {
         }
         
         reviewCount = dictionary["review_count"] as? NSNumber
+        isClosed = dictionary.valueForKeyPath("is_closed") as? Bool
+        menuProvider = dictionary.valueForKeyPath("menu_provider") as? String
+        crossStreets = dictionary.valueForKeyPath("location.cross_streets") as? String
+        id = dictionary.valueForKeyPath("id") as? String
+        
+        //save latitude and longitude
+        let latitude = dictionary.valueForKeyPath("location.coordinate.latitude")
+        let longitude = dictionary.valueForKeyPath("location.coordinate.longitude")
+        coordinate = (latitude as? Double, longitude as? Double)
     }
     
     class func businesses(array array: [NSDictionary]) -> [Business] {
