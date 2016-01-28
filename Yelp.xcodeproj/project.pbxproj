@@ -20,6 +20,7 @@
 		D07A15461C58CA2500EF6542 /* BusinessDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A15451C58CA2500EF6542 /* BusinessDetailsViewController.swift */; };
 		D0A61E831C4F999800C41E73 /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A61E821C4F999800C41E73 /* SwitchCell.swift */; };
 		D0A61E871C4F9F9D00C41E73 /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A61E861C4F9F9D00C41E73 /* FiltersViewController.swift */; };
+		D0B0B28E1C5A2A4D00A85291 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B0B28D1C5A2A4D00A85291 /* InfiniteScrollActivityView.swift */; };
 		D0C21B131C4E287200C21A92 /* BusinessCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0C21B121C4E287200C21A92 /* BusinessCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		D07A15451C58CA2500EF6542 /* BusinessDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessDetailsViewController.swift; sourceTree = "<group>"; };
 		D0A61E821C4F999800C41E73 /* SwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		D0A61E861C4F9F9D00C41E73 /* FiltersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
+		D0B0B28D1C5A2A4D00A85291 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
 		D0C21B121C4E287200C21A92 /* BusinessCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BusinessCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +178,7 @@
 			children = (
 				D0C21B121C4E287200C21A92 /* BusinessCell.swift */,
 				D0A61E821C4F999800C41E73 /* SwitchCell.swift */,
+				D0B0B28D1C5A2A4D00A85291 /* InfiniteScrollActivityView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0B0B28E1C5A2A4D00A85291 /* InfiniteScrollActivityView.swift in Sources */,
 				D0C21B131C4E287200C21A92 /* BusinessCell.swift in Sources */,
 				22AAAA9C1AEA1EC300A544AF /* BusinessesViewController.swift in Sources */,
 				D0A61E871C4F9F9D00C41E73 /* FiltersViewController.swift in Sources */,

@@ -15,6 +15,66 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
 
     var businesses: [Business]!
     
+    //flag for infinite scroll
+    var isMoreDataLoading = false
+    var loadingMoreView: InfiniteScrollActivityView?
+    var selectedCategories: [String]?
+    
+    //infinite scroll
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        if !isMoreDataLoading {
+            //calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            //when the user has scrolled past the threshold, start requesting
+            if scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging {
+                isMoreDataLoading = true
+                
+                let frame = CGRectMake(0, tableView.contentSize.height, tableView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
+                //load more data
+                loadMoreData()
+            }
+        }
+    }
+    
+    func loadMoreData() {
+//        Business.searchWithTerm("Restaurants", sort: nil, categories: categories, deals: nil) {
+//            (businesses: [Business]!, error: NSError!) -> Void in
+        Business.searchWithTerm("Restaurants", sort: nil, categories: selectedCategories, deals: nil, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+            if error != nil {
+                self.delay(2.0, closure: {
+                    self.loadingMoreView?.stopAnimating()
+                    //TODO: show network error
+                })
+            } else {
+                self.delay(2.0, closure: { Void in
+                    self.businesses = businesses
+                    self.tableView.reloadData()
+                    self.loadingMoreView?.stopAnimating()
+                    self.isMoreDataLoading = false
+                })
+            }
+        })
+    }
+    
+    func setupInfiniteScrollView() {
+        let frame = CGRectMake(0, tableView.contentSize.height,
+            tableView.bounds.size.width,
+            InfiniteScrollActivityView.defaultHeight
+        )
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.hidden = true
+        tableView.addSubview( loadingMoreView! )
+        
+        var insets = tableView.contentInset
+        insets.bottom += InfiniteScrollActivityView.defaultHeight
+        tableView.contentInset = insets
+    }
+    
     //pull to refresh
     func pullToRefreshControl() {
         refreshControl = UIRefreshControl()
@@ -70,6 +130,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             
         //categories from the passed back object filters
         let categories = filters["categories"] as? [String]
+        //save the selectedCategories state to be used with infinite scrolling
+        selectedCategories = categories
         //retrigger the data call with categories
         Business.searchWithTerm("Restaurants", sort: nil, categories: categories, deals: nil) {
             (businesses: [Business]!, error: NSError!) -> Void in
@@ -89,9 +151,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         //to prevent runtime calculation of scroll row height of large number of rows,use this for autolayout
         tableView.estimatedRowHeight = 120
         
+        
         pullToRefreshControl()
-
-        Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        setupInfiniteScrollView()
+        
+        //Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        Business.searchWithTerm("Restaurants", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
             self.tableView.reloadData()
             
