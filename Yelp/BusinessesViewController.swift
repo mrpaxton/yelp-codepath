@@ -10,15 +10,64 @@ import UIKit
 
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
     
+    @IBOutlet weak var yelpSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var refreshControl: UIRefreshControl!
+    var searchButtonItem: UIBarButtonItem!
 
     var businesses: [Business]!
+    var filteredBusinesses: [Business]!
     
     //flag for infinite scroll
     var isMoreDataLoading = false
     var loadingMoreView: InfiniteScrollActivityView?
     var selectedCategories: [String]?
+    
+    func didTapSearchButton(sender: AnyObject?) {
+        showSearchBar(yelpSearchBar)
+    }
+    
+    func showSearchBar(yelpSearchBar: UISearchBar) {
+        //show search bar
+        yelpSearchBar.hidden = true
+        yelpSearchBar.alpha = 0.3
+        navigationItem.titleView = yelpSearchBar
+        navigationItem.setRightBarButtonItem(nil , animated: true)
+        UIView.animateWithDuration(0.2,
+            animations: { Void in
+                self.yelpSearchBar.hidden = false
+                self.yelpSearchBar.alpha = 1
+            }, completion: { finished in
+                self.yelpSearchBar.setShowsCancelButton(true, animated: false)
+                self.yelpSearchBar.becomeFirstResponder()
+            }
+        )
+    }
+    
+    func didTapFilterButton(sender: AnyObject?) {
+        print("filter button tapped")
+    }
+    
+    func customizeNavigationBar() {
+        self.navigationItem.title = "Yelp Me"
+        
+        //setup for search bar
+        yelpSearchBar.hidden = true
+        searchButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: "didTapSearchButton:")
+        navigationItem.rightBarButtonItem = searchButtonItem
+        
+        //preare button for the left navigationitem's bar item button and add negative spacer
+        let filterIcon = UIImage(named: "FilterIcon")
+        let filterButton = UIButton(type: UIButtonType.Custom)
+        filterButton.addTarget(self,
+            action: "didTapFilterButton:", forControlEvents: .TouchUpInside)
+        filterButton.frame = CGRectMake(0, 0, 44, 44)
+        filterButton.setImage(filterIcon , forState: UIControlState.Normal)
+        let yelpBarItemButton = UIBarButtonItem(customView: filterButton)
+        let negativeSpacer: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil , action: nil )
+        negativeSpacer.width = -15
+        navigationItem.leftBarButtonItems = [negativeSpacer, yelpBarItemButton]
+    }
     
     //infinite scroll
     func scrollViewDidScroll(scrollView: UIScrollView) {
@@ -99,12 +148,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return businesses?.count ?? 0
+        return filteredBusinesses?.count ?? 0
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("BusinessCell", forIndexPath: indexPath) as! BusinessCell
-        cell.business = businesses[indexPath.row]
+        cell.business = filteredBusinesses[indexPath.row]
         return cell
     }
     
@@ -145,52 +194,43 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
         tableView.delegate = self
         tableView.dataSource = self
+        yelpSearchBar.delegate = self
         
         //use whatever autolayout automatic rule told you to do
         tableView.rowHeight = UITableViewAutomaticDimension
         //to prevent runtime calculation of scroll row height of large number of rows,use this for autolayout
         tableView.estimatedRowHeight = 120
         
-        
+        customizeNavigationBar()
         pullToRefreshControl()
         setupInfiniteScrollView()
         
-        //Business.searchWithTerm("Thai", completion: { (businesses: [Business]!, error: NSError!) -> Void in
         Business.searchWithTerm("Restaurants", completion: { (businesses: [Business]!, error: NSError!) -> Void in
             self.businesses = businesses
+            self.filteredBusinesses = businesses
             self.tableView.reloadData()
-            
-            for business in businesses {
-                print(business.name!)
-                print(business.address!)
-            }
         })
-
-/* Example of Yelp search with more search options specified
-        Business.searchWithTerm("Restaurants", sort: .Distance, categories: ["asianfusion", "burgers"], deals: true) { (businesses: [Business]!, error: NSError!) -> Void in
-            self.businesses = businesses
-            
-            for business in businesses {
-                print(business.name!)
-                print(business.address!)
-            }
-        }
-*/
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+extension BusinessesViewController: UISearchBarDelegate {
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        searchBar.setShowsCancelButton(true, animated: true)
+        
+        filteredBusinesses = searchText.isEmpty ? businesses : businesses.filter({
+            $0.name!.rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
+        })
+        tableView.reloadData()
     }
-    */
-
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        (filteredBusinesses, searchBar.text) = (businesses, "")
+        tableView.reloadData()
+        searchBar.resignFirstResponder()
+    }
 }
