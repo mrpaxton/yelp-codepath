@@ -15,6 +15,13 @@ class BusinessMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+        let circleView = MKCircleRenderer(overlay: overlay)
+        circleView.strokeColor = UIColor.redColor()
+        circleView.lineWidth = 1
+        return circleView
+    }
+    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "customAnnotationView"
         
@@ -43,11 +50,19 @@ class BusinessMapViewController: UIViewController, MKMapViewDelegate {
         
         mapView.delegate = self
         
+        //add circle overlay
+        let coordinate = CLLocationCoordinate2D(latitude: 37.7833, longitude: -122.4167)
+        let circleOverlay: MKCircle = MKCircle(centerCoordinate:coordinate, radius: 10000)
+        mapView.addOverlay(circleOverlay)
+        
+        addAnnotationAtCoordinate(coordinate)
+        
         // set the region to display, this also sets a correct zoom level
         // set starting center location in San Francisco
         let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
         goToLocation(centerLocation)
-        addAnnotationAtCoordinate(centerLocation.coordinate)
+        
+        
     }
     
     func goToLocation(location: CLLocation) {
