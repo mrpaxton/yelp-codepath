@@ -10,7 +10,8 @@ import UIKit
 
 class BusinessesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, FiltersViewControllerDelegate {
     
-    @IBOutlet weak var yelpSearchBar: UISearchBar!
+    
+    @IBOutlet weak var bizSearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var refreshControl: UIRefreshControl!
     var searchButtonItem: UIBarButtonItem!
@@ -24,22 +25,22 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     var selectedCategories: [String]?
     
     func didTapSearchButton(sender: AnyObject?) {
-        showSearchBar(yelpSearchBar)
+        showSearchBar()
     }
     
-    func showSearchBar(yelpSearchBar: UISearchBar) {
+    func showSearchBar() {
         //show search bar
-        yelpSearchBar.hidden = true
-        yelpSearchBar.alpha = 0.3
-        navigationItem.titleView = yelpSearchBar
+        bizSearchBar.hidden = true
+        bizSearchBar.alpha = 0.3
+        navigationItem.titleView = bizSearchBar
         navigationItem.setRightBarButtonItem(nil , animated: true)
         UIView.animateWithDuration(0.2,
             animations: { Void in
-                self.yelpSearchBar.hidden = false
-                self.yelpSearchBar.alpha = 1
+                self.bizSearchBar.hidden = false
+                self.bizSearchBar.alpha = 1
             }, completion: { finished in
-                self.yelpSearchBar.setShowsCancelButton(true, animated: false)
-                self.yelpSearchBar.becomeFirstResponder()
+                self.bizSearchBar.setShowsCancelButton(true, animated: false)
+                self.bizSearchBar.becomeFirstResponder()
             }
         )
     }
@@ -52,7 +53,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         self.navigationItem.title = "Yelp Me"
         
         //setup for search bar
-        yelpSearchBar.hidden = true
+        bizSearchBar.hidden = true
         searchButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Search, target: self, action: "didTapSearchButton:")
         navigationItem.rightBarButtonItem = searchButtonItem
         
@@ -194,7 +195,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         
         tableView.delegate = self
         tableView.dataSource = self
-        yelpSearchBar.delegate = self
+        bizSearchBar.delegate = self
         
         //use whatever autolayout automatic rule told you to do
         tableView.rowHeight = UITableViewAutomaticDimension
