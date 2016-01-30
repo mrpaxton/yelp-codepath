@@ -68,6 +68,10 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         let negativeSpacer: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FixedSpace, target: nil , action: nil )
         negativeSpacer.width = -15
         navigationItem.leftBarButtonItems = [negativeSpacer, yelpBarItemButton]
+        
+        if let navigationBar = navigationController?.navigationBar {
+            navigationBar.tintColor = UIColor.blackColor()
+        }
     }
     
     //infinite scroll

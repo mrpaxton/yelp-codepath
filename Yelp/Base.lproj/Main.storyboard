@@ -15,20 +15,20 @@
                         <viewControllerLayoutGuide type="bottom" id="jQ6-ju-gj1"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="XhR-oz-92f">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="155" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ouh-sW-0at">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableFooterView" contentMode="redraw" id="jeJ-Nd-BXv">
-                                    <rect key="frame" x="0.0" y="247" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="183" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="155" id="Gvg-Lo-18L" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="155"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvg-Lo-18L" id="xra-a4-26A">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="155"/>
@@ -155,15 +155,15 @@
                         <viewControllerLayoutGuide type="bottom" id="iX2-wh-z5R"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="UBq-Zs-Hj1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="81" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="UwW-Nf-4oo">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SwitchCell" rowHeight="81" id="2zv-EF-LkQ" customClass="SwitchCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="81"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2zv-EF-LkQ" id="3jW-zd-nQg">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
@@ -228,9 +228,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pge-9g-PgN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GXT-qr-Qq9">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="GXT-qr-Qq9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.1629645378" blue="0.28457391920000003" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -250,17 +251,17 @@
                         <viewControllerLayoutGuide type="bottom" id="THg-Mi-WPQ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="0nN-2v-mTg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dtg-7C-abX">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dtg-7C-abX">
                                 <rect key="frame" x="0.0" y="64" width="320" height="138"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="138" id="af1-Vm-P5e"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EEq-di-XwR">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EEq-di-XwR">
                                 <rect key="frame" x="0.0" y="202" width="320" height="125"/>
                                 <color key="backgroundColor" red="1" green="0.37584108599999999" blue="0.47469106370000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -303,7 +304,7 @@
                         <viewControllerLayoutGuide type="bottom" id="rzw-kM-8zu"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ZwF-3l-3wX">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eAq-Lz-IcD">
@@ -334,9 +335,10 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q8B-dV-bkv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qzr-0Y-TrB">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Qzr-0Y-TrB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="1" green="0.1629645378" blue="0.28457391920000003" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
