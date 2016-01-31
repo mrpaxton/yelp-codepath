@@ -31,7 +31,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="155"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvg-Lo-18L" id="xra-a4-26A">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="155"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="154.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lbs-eL-Hk8">
@@ -133,7 +133,7 @@
                     <navigationItem key="navigationItem" title="YelpBase" id="Zy6-Fe-73y">
                         <barButtonItem key="leftBarButtonItem" title="Filters" id="Cre-Ct-QZI">
                             <connections>
-                                <segue destination="Q8B-dV-bkv" kind="modal" id="kvm-nG-8pS"/>
+                                <segue destination="Q8B-dV-bkv" kind="modal" identifier="FilterSegue" id="kvm-nG-8pS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -166,7 +166,7 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="81"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2zv-EF-LkQ" id="3jW-zd-nQg">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="81"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5f-Y8-fW1">

@@ -46,7 +46,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     }
     
     func didTapFilterButton(sender: AnyObject?) {
-        print("filter button tapped")
+        performSegueWithIdentifier("FilterSegue", sender: self)
     }
     
     func customizeNavigationBar() {
@@ -95,18 +95,19 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
+    var loadMoreOffset = 0
+    
     func loadMoreData() {
-//        Business.searchWithTerm("Restaurants", sort: nil, categories: categories, deals: nil) {
-//            (businesses: [Business]!, error: NSError!) -> Void in
-        Business.searchWithTerm("Restaurants", sort: nil, categories: selectedCategories, deals: nil, completion: { (businesses: [Business]!, error: NSError!) -> Void in
+        Business.searchWithTerm("Restaurants", offset: loadMoreOffset, sort: nil, categories: selectedCategories, deals: nil, completion: { (businesses: [Business]!, error: NSError!) -> Void in
             if error != nil {
                 self.delay(2.0, closure: {
                     self.loadingMoreView?.stopAnimating()
                     //TODO: show network error
                 })
             } else {
-                self.delay(2.0, closure: { Void in
-                    self.businesses = businesses
+                self.delay(0.5, closure: { Void in
+                    self.loadMoreOffset += 20
+                    self.filteredBusinesses.appendContentsOf(businesses)
                     self.tableView.reloadData()
                     self.loadingMoreView?.stopAnimating()
                     self.isMoreDataLoading = false
