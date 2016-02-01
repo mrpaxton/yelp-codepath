@@ -27,6 +27,14 @@ class BusinessDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "BusinessMapSegue" {
+            if let businessMapVC = segue.destinationViewController as? BusinessMapViewController {
+                businessMapVC.business = self.business
+            }
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

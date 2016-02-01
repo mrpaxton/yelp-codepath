@@ -11,38 +11,25 @@ import CoreLocation
 import MapKit
 
 class BusinessMapViewController: UIViewController, MKMapViewDelegate {
-
     
     @IBOutlet weak var mapView: MKMapView!
+    var business: Business?
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        let circleView = MKCircleRenderer(overlay: overlay)
-        circleView.strokeColor = UIColor.redColor()
-        circleView.lineWidth = 1
-        return circleView
-    }
-    
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
-        let identifier = "customAnnotationView"
+    func addPin(latitude latitude: Double, longitude: Double, title: String) {
         
-        // custom image annotation
-        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
-        if (annotationView == nil) {
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-        }
-        else {
-            annotationView!.annotation = annotation
-        }
-        annotationView!.image = UIImage(named: "FilterIcon")
-        
-        return annotationView
-    }
-    
-    func addAnnotationAtCoordinate(coordinate: CLLocationCoordinate2D) {
         let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        annotation.title = "An annotation!"
+        let locationCoordinate = CLLocationCoordinate2DMake(latitude, longitude)
+        annotation.coordinate = locationCoordinate
+        annotation.title = title
+        
         mapView.addAnnotation(annotation)
+        
+        //set additional annotation
+        /*let annotation2 = MKPointAnnotation()
+        let locationCoordinate2 = CLLocationCoordinate2DMake(latitude + 0.02, longitude + 0.02)
+        annotation2.coordinate = locationCoordinate2
+        annotation2.title = "Foo"
+        mapView.addAnnotation(annotation2)*/
     }
     
     override func viewDidLoad() {
@@ -51,29 +38,48 @@ class BusinessMapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         
         //add circle overlay
-        let coordinate = CLLocationCoordinate2D(latitude: 37.7833, longitude: -122.4167)
-        let circleOverlay: MKCircle = MKCircle(centerCoordinate:coordinate, radius: 10000)
+        let coordinate = CLLocationCoordinate2D(latitude: (business?.coordinate.0)!, longitude: (business?.coordinate.1)!)
+        let circleOverlay: MKCircle = MKCircle(centerCoordinate:coordinate, radius: 1000)
         mapView.addOverlay(circleOverlay)
         
         //addAnnotationAtCoordinate(coordinate)
         
         // set the region to display, this also sets a correct zoom level
         // set starting center location in San Francisco
-        let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
+        let centerLocation = CLLocation(latitude: (business?.coordinate.0)!, longitude: (business?.coordinate.1)!)
         goToLocation(centerLocation)
+        addPin(latitude: (business?.coordinate.0)!, longitude: (business?.coordinate.1)!, title: business!.name! )
     }
     
     func goToLocation(location: CLLocation) {
-        let span = MKCoordinateSpanMake(0.1, 0.1)
-        let region = MKCoordinateRegionMake(location.coordinate, span)
+        let span = MKCoordinateSpanMake(0.08, 0.08)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
         mapView.setRegion(region, animated: false)
     }
-
+    
+        func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+            let circleView = MKCircleRenderer(overlay: overlay)
+            circleView.strokeColor = UIColor.brownColor()
+            circleView.lineWidth = 1
+            return circleView
+        }
+    
+//        func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+//            let reuseID = "myAnnotationView"
+//            var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID)
+//            if (annotationView == nil) {
+//                annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+//            }
+//    
+//            annotationView!.image = UIImage(named: "FilterImage")
+//            return annotationView
+//        }
+    
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
     /*
     // MARK: - Navigation
@@ -84,5 +90,4 @@ class BusinessMapViewController: UIViewController, MKMapViewDelegate {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
