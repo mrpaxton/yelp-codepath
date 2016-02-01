@@ -30,18 +30,20 @@ class FiltersViewController: UIViewController, UITableViewDataSource, UITableVie
         var filters = [String : AnyObject]()
         
         var selectedCategories = [String]()
-        print(switchStates)
+        
         for (row, isSelected) in switchStates {
             if isSelected {
                 selectedCategories.append(categories[row]["code"]!)
             }
         }
+        
         if selectedCategories.count > 0 {
             filters["categories"] = selectedCategories
         }
         
         delegate?.filtersViewController?(self, didUpdateFilters: filters )
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

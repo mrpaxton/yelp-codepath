@@ -55,14 +55,12 @@ class BusinessMapViewController: UIViewController, MKMapViewDelegate {
         let circleOverlay: MKCircle = MKCircle(centerCoordinate:coordinate, radius: 10000)
         mapView.addOverlay(circleOverlay)
         
-        addAnnotationAtCoordinate(coordinate)
+        //addAnnotationAtCoordinate(coordinate)
         
         // set the region to display, this also sets a correct zoom level
         // set starting center location in San Francisco
         let centerLocation = CLLocation(latitude: 37.7833, longitude: -122.4167)
         goToLocation(centerLocation)
-        
-        
     }
     
     func goToLocation(location: CLLocation) {

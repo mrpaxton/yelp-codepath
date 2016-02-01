@@ -17,6 +17,7 @@ class BusinessDetailsViewController: UIViewController {
         
         print("business: \(business.name)")
         print("coordinate: \(business.coordinate)")
+        print(business)
 
         // Do any additional setup after loading the view.
     }

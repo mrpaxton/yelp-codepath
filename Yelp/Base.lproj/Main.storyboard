@@ -307,18 +307,16 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eAq-Lz-IcD">
-                                <rect key="frame" x="0.0" y="64" width="320" height="79"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="450" id="C8a-Z9-MTE"/>
-                                </constraints>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eAq-Lz-IcD">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="eAq-Lz-IcD" firstAttribute="leading" secondItem="ZwF-3l-3wX" secondAttribute="leading" id="LvW-z9-QvW"/>
-                            <constraint firstAttribute="trailing" secondItem="eAq-Lz-IcD" secondAttribute="trailing" id="Sv8-d3-Vbh"/>
-                            <constraint firstItem="eAq-Lz-IcD" firstAttribute="top" secondItem="Tbr-88-bGq" secondAttribute="bottom" id="edZ-80-cOp"/>
+                            <constraint firstAttribute="trailing" secondItem="eAq-Lz-IcD" secondAttribute="trailing" id="IGg-ka-Lfr"/>
+                            <constraint firstItem="rzw-kM-8zu" firstAttribute="top" secondItem="eAq-Lz-IcD" secondAttribute="bottom" id="WF8-gZ-D8M"/>
+                            <constraint firstItem="eAq-Lz-IcD" firstAttribute="top" secondItem="Tbr-88-bGq" secondAttribute="bottom" id="hON-OC-iGe"/>
+                            <constraint firstItem="eAq-Lz-IcD" firstAttribute="leading" secondItem="ZwF-3l-3wX" secondAttribute="leading" id="zCy-yU-b54"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Tag-P0-YZM"/>

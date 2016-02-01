@@ -24,6 +24,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     var loadingMoreView: InfiniteScrollActivityView?
     var selectedCategories: [String]?
     
+    var loadMoreOffset = 0
+    
     func didTapSearchButton(sender: AnyObject?) {
         showSearchBar()
     }
@@ -94,8 +96,6 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             }
         }
     }
-    
-    var loadMoreOffset = 0
     
     func loadMoreData() {
         Business.searchWithTerm("Restaurants", offset: loadMoreOffset, sort: nil, categories: selectedCategories, deals: nil, completion: { (businesses: [Business]!, error: NSError!) -> Void in
@@ -169,7 +169,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             let chosenIndex = self.tableView.indexPathForCell(sender as! BusinessCell)?.row
             
             if let  businessDetailsVC = segue.destinationViewController as? BusinessDetailsViewController {
-                businessDetailsVC.business = businesses[chosenIndex!]
+                businessDetailsVC.business = filteredBusinesses[chosenIndex!]
             }
         }
         
@@ -187,10 +187,12 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         let categories = filters["categories"] as? [String]
         //save the selectedCategories state to be used with infinite scrolling
         selectedCategories = categories
+        //reset the business array
+        self.filteredBusinesses = []
         //retrigger the data call with categories
         Business.searchWithTerm("Restaurants", sort: nil, categories: categories, deals: nil) {
             (businesses: [Business]!, error: NSError!) -> Void in
-            self.businesses = businesses
+            self.filteredBusinesses = businesses
             self.tableView.reloadData()
         }
     }
