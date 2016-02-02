@@ -12,12 +12,24 @@ class BusinessDetailsViewController: UIViewController {
     
     var business: Business!
 
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var typesLabel: UILabel!
+    @IBOutlet weak var crossStreetLabel: UILabel!
+    @IBOutlet weak var openCloseLabel: UILabel!
+    @IBOutlet weak var photosWebView: UIWebView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("business: \(business.name)")
-        print("coordinate: \(business.coordinate)")
-        print(business)
+        nameLabel.text = business.name!
+        typesLabel.text = business.categories!
+        crossStreetLabel.text = business.crossStreets
+        openCloseLabel.text = business.isClosed == true ? "Permanently Closed" : ""
+        
+        let url = "http://www.yelp.com/biz_photos/\(business.id!)"
+        let requestURL = NSURL(string: url)
+        let request = NSURLRequest(URL: requestURL!)
+        photosWebView.loadRequest(request)
 
         // Do any additional setup after loading the view.
     }

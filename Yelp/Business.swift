@@ -31,7 +31,6 @@ class Business: NSObject {
         let imageURLString = dictionary["image_url"] as? String
         if imageURLString != nil {
             imageURL = NSURL(string: imageURLString!)!
-            print(imageURL)
         } else {
             imageURL = nil
         }
@@ -83,6 +82,7 @@ class Business: NSObject {
         
         reviewCount = dictionary["review_count"] as? NSNumber
         isClosed = dictionary.valueForKeyPath("is_closed") as? Bool
+        print(isClosed)
         menuProvider = dictionary.valueForKeyPath("menu_provider") as? String
         crossStreets = dictionary.valueForKeyPath("location.cross_streets") as? String
         id = dictionary.valueForKeyPath("id") as? String
