@@ -24,7 +24,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     var loadingMoreView: InfiniteScrollActivityView?
     var selectedCategories: [String]?
     
-    var loadMoreOffset = 0
+    var loadMoreOffset = 20
     
     func didTapSearchButton(sender: AnyObject?) {
         showSearchBar()
